@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Sorting.HeapSort;
 
 namespace Sorting
@@ -11,11 +7,18 @@ namespace Sorting
     {
         static void Main(string[] args)
         {
-            Heap heap = Heap.Create(4, 1, 3, 2, 16, 9, 10, 14, 8, 7);
-            for (int i = 0; i < 10; i++)
+            Heap<int> heap = Heap<int>.Create(4, 1, 3, 2, 16, 9, 10, 14, 8, 7);           
+            heap.InsertValue(5);
+            heap.InsertValue(5);
+            heap.InsertValue(20);
+            heap.InsertValue(0);
+            Console.WriteLine(heap);
+
+            while(heap.NotEmpty)
             {
                 Console.WriteLine(heap.ExtractMaximum());
             }
+            Console.WriteLine(heap);
             Console.Read();
         }
     }
