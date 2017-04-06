@@ -7,13 +7,13 @@ namespace Sorting.HeapSort
     class Heap<T> where T: IComparable, new()
     {
         private readonly T _minValue;
-        private IList<T> _heap = null;
+        private IList<T> _heap;
         private int _heapLength;
+
         private Heap(T[] heap, T minValue)
         {
             _heap = new List<T>(heap);
             _heapLength = _heap.Count;
-
             //for method InsertValue
             _minValue = minValue;
         }
@@ -57,8 +57,8 @@ namespace Sorting.HeapSort
         private void MaxHeapify(int curIndex)
         {
             int largestIndex;
-            int leftIndex = curIndex * 2 + 1;
-            int rightIndex = curIndex * 2 + 2;
+            int leftIndex = curIndex.Left();
+            int rightIndex = curIndex.Right();
 
             if (leftIndex < _heapLength && _heap[leftIndex].CompareTo(_heap[curIndex]) > 0)
             {
@@ -97,12 +97,12 @@ namespace Sorting.HeapSort
             }
 
             _heap[index] = newValue;
-            int parentIndex = ((index + 1) / 2) - 1;
+            int parentIndex = index.Parent();
             while (index > 0 && _heap[index].CompareTo(_heap[parentIndex]) > 0)
             {
                 _heap.Swap(index, parentIndex);
                 index = parentIndex;
-                parentIndex = ((index + 1) / 2) - 1;
+                parentIndex = index.Parent();
             }
          }
 
