@@ -1,5 +1,7 @@
 ﻿using System;
 using Sorting.HeapSort;
+using Sorting.MergeSort;
+using Sorting.Utilities;
 
 namespace Sorting
 {
@@ -7,18 +9,18 @@ namespace Sorting
     {
         static void Main(string[] args)
         {
-            Heap<int> heap = Heap<int>.Create(4, 1, 3, 2, 16, 9, 10, 14, 8, 7);           
-            heap.InsertValue(5);
-            heap.InsertValue(5);
-            heap.InsertValue(20);
-            heap.InsertValue(0);
-            Console.WriteLine(heap);
+            var heapSort = new HeapSorting<int>();
+            int[] array1 = { 4, 1, 3, 2, 16, 9, 10, 14, 8, 7, 1 };
+            heapSort.Sort(array1);
 
-            while(heap.NotEmpty)
-            {
-                Console.WriteLine(heap.ExtractMaximum());
-            }
-            Console.WriteLine(heap);
+            Console.WriteLine(string.Join(", ", array1));
+
+            var mergeSort = new MergeSorting<int>();
+            int[] array2 = { 4, 1, 3, 2, 16, 9, 10, 14, 8, 7, 1 };
+            mergeSort.Sort(array2);
+
+            Console.WriteLine(string.Join(", ", array2));
+
             Console.Read();
         }
     }

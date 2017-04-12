@@ -24,16 +24,25 @@ namespace Sorting.Utilities
             array[firstIndex] = array[secontIndex];
             array[secontIndex] = tmp;
         }
-
         public static string Join<T>(this IList<T> array, int count)
         {
             var cropped = new T[count];
             Array.Copy(array.ToArray(), cropped, count);
             return string.Join<T>(", ", cropped);
         }
-        public static T MinValue<T>(this T value)
+        public static T MinValue<T>(this T item)
         {
-            FieldInfo field = typeof(T).GetField("MinValue", BindingFlags.Public | BindingFlags.Static);
+            return item.Value("MinValue");
+        }
+
+        public static T MaxValue<T>(this T item)
+        {
+            return item.Value("MaxValue");
+        }
+
+        private static T Value<T>(this T item, string name)
+        {
+            FieldInfo field = typeof(T).GetField(name, BindingFlags.Public | BindingFlags.Static);
             if (field == null)
             {
                 throw new InvalidOperationException();

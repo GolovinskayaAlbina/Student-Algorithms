@@ -42,6 +42,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="HeapSort\Heap.cs" />
+    <Compile Include="HeapSort\HeapSorting.cs" />
+    <Compile Include="MergeSort\MergeSorting.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utilities\Extensions.cs" />

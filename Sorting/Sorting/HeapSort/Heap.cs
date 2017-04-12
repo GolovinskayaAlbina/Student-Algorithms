@@ -4,6 +4,10 @@ using Sorting.Utilities;
 
 namespace Sorting.HeapSort
 {
+    /// <summary>
+    /// Queue with priority based on heap
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
     class Heap<T> where T: IComparable, new()
     {
         private readonly T _minValue;
@@ -112,11 +116,6 @@ namespace Sorting.HeapSort
             {
                 return _heapLength > 0;
             }
-        }
-
-        public override string ToString()
-        {
-            return _heap.Join(_heapLength);
         }
     }
 }
